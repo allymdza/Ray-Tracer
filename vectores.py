@@ -59,7 +59,16 @@ class vectores:
         
         norma = math.sqrt(math.pow(x, 2) + math.pow(y, 2) + math.pow(z, 2))
         return norma
+    
+    def normalizar_vector(self):
+        x = self.x
+        y = self.y
+        z = self.z
 
+        norma = math.sqrt(math.pow(x, 2) + math.pow(y, 2) + math.pow(z, 2))
+
+        resultado = vectores(x / norma, y / norma, z / norma)
+        return resultado
 
     
     
