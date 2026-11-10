@@ -1,4 +1,6 @@
 
+import math
+
 class vectores:
 
     def __init__ (self, x, y, z):
@@ -37,4 +39,27 @@ class vectores:
 
         resultado = vectores(x * escalar, y * escalar, z * escalar)
         return resultado
+
+    def producto_punto(self, vector2):
+        x1 = self.x
+        y1 = self.y
+        z1 = self.z
+            
+        x2 = vector2.x
+        y2 = vector2.y
+        z2 = vector2.z
+
+        resultado = (x1 * x2) + (y1 * y2) + (z1 * z2)
+        return resultado
+
+    def norma_vector(self):
+        x = self.x
+        y = self.y
+        z = self.z
+        
+        norma = math.sqrt(math.pow(x, 2) + math.pow(y, 2) + math.pow(z, 2))
+        return norma
+
+
+    
     
