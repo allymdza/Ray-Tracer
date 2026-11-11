@@ -11,3 +11,11 @@ def test_suma_vectores():
     resultado = vectores(2, 4, 6)
     assert suma == resultado
 
+def test_resta_vectores():
+    vector1 = vectores(1, 2, 3)
+    vector2 = vectores(1, 2, 3)
+    
+    resta = vector1.resta_vectores(vector2)
+    resultado = vectores(0, 0, 0)
+    assert resta == resultado
+
