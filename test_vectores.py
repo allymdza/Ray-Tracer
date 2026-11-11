@@ -27,3 +27,11 @@ def test_producto_escalar():
     resultado = vectores(5, 10, 15)
     assert producto == resultado
 
+def test_producto_punto():
+    vector1 = vectores(1, 2, 3)
+    vector2 = vectores(1, 2, 3)
+
+    producto = vector1.producto_punto(vector2)
+    resultado = 14
+    assert producto == resultado
+    
