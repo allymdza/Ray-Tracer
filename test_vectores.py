@@ -42,4 +42,11 @@ def test_norma_vector():
     resultado = pytest.approx(3.74, abs=0.1)
     #se coloca abs=0.1 pues estamos ocupando un redondeo de dos decimales
     #y es el margen de error que acepatmos
-    assert norma == resultado   
+    assert norma == resultado  
+
+def test_normaliza_vector():
+    vector = vectores(0, 3, 0)
+
+    normalizado = vector.normalizar_vector()
+    resultado = vectores(0, 1, 0)
+    assert normalizado == resultado
