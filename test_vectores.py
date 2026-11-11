@@ -34,4 +34,12 @@ def test_producto_punto():
     producto = vector1.producto_punto(vector2)
     resultado = 14
     assert producto == resultado
-    
+
+def test_norma_vector():
+    vector = vectores(1, 2, 3)
+
+    norma = vector.norma_vector()
+    resultado = pytest.approx(3.74, abs=0.1)
+    #se coloca abs=0.1 pues estamos ocupando un redondeo de dos decimales
+    #y es el margen de error que acepatmos
+    assert norma == resultado   
