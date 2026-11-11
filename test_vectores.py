@@ -19,3 +19,11 @@ def test_resta_vectores():
     resultado = vectores(0, 0, 0)
     assert resta == resultado
 
+def test_producto_escalar():
+    vector = vectores(1, 2, 3)
+    escalar = 5
+
+    producto = vector.producto_escalar(escalar)
+    resultado = vectores(5, 10, 15)
+    assert producto == resultado
+
