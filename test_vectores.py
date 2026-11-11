@@ -1,0 +1,13 @@
+
+import pytest
+from vectores import vectores
+
+
+def test_suma_vectores():
+    vector1 = vectores(1, 2, 3)
+    vector2 = vectores(1, 2, 3)
+
+    suma = vector1.suma_vectores(vector2)
+    resultado = vectores(2, 4, 6)
+    assert suma == resultado
+
