@@ -70,5 +70,9 @@ class vectores:
         resultado = vectores(x / norma, y / norma, z / norma)
         return resultado
 
-    
-    
+    #metodo para poder comprar objetos de tipo vector
+    def __eq__(self, otro):
+        return self.x == otro.x and self.y == otro.y and self.z == otro.z    
+
+        
+        
