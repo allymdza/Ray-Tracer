@@ -5,7 +5,7 @@ class plano:
         self.punto = punto
         self.normal = normal
 
-    def intersecciona(self, rayo):
+    def intersecciona(self, rayo, hit_info, tmin = 0.001, tmax= float("inf")):
         denom = rayo.direccion.producto_punto(self.normal) #si el rayo toca la normal (el producto punto es 0), es perpendicular al plano. no se tocan el rayo y plano
         if abs(denom) < (1e-8): #usamos abs para que no importe la direccion y un numero muy pequeño en vez de cero para prevenir los probelmas con el 0 y los decimales
             return False 
@@ -19,6 +19,10 @@ class plano:
         D = self.punto.producto_punto(self.normal)
         t = (D - self.normal.producto_punto(rayo.origen)) / denom
 
-        return t > 0.001  # 0.001 para cuidar decimales
-        """si es 0 estan justo en el mismo lugar, puede provocar errores
-        si es menor que cero esta atras del rayo"""
+        if t < tmin or tmax < t:
+            return False
+
+        hit_info.t = t
+        hit_info.p = rayo.parametrica(t)
+
+        return True
