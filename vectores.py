@@ -34,7 +34,7 @@ class vectores:
         resta = vectores(x1 - x2, y1 - y2, z1 - z2)
         return resta
     
-    def producto_escalar(self, escalar: int):
+    def producto_escalar(self, escalar: float):
         x = self.x
         y = self.y
         z = self.z
