@@ -2,6 +2,8 @@
 import math
 
 class vectores:
+    # definimos un margen de error para realizar las comparaciones entre parámetros (0.00001)
+    EPSILON = 1e-5
 
     def __init__ (self, x, y, z):
         self.x = x
@@ -71,8 +73,13 @@ class vectores:
         return resultado
 
     #metodo para poder comprar objetos de tipo vector
-    def __eq__(self, otro):
-        return self.x == otro.x and self.y == otro.y and self.z == otro.z    
-
+    def __eq__(self, otro):        
+        if isinstance(otro, vectores):
+            return (
+                math.isclose(self.x, otro.x, abs_tol=self.EPSILON)
+                and math.isclose(self.y, otro.y, abs_tol=self.EPSILON)
+                and math.isclose(self.z, otro.z, abs_tol=self.EPSILON)
+            )
+        return False
         
         

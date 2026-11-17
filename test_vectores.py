@@ -50,3 +50,7 @@ def test_normaliza_vector():
     normalizado = vector.normalizar_vector()
     resultado = vectores(0, 1, 0)
     assert normalizado == resultado
+    
+def test_compara_vector_con_no_vector():
+    vector = vectores(1, 2, 3)
+    assert False == vector.__eq__("hola")
