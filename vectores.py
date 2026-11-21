@@ -2,77 +2,43 @@
 import math
 
 class vectores:
+    # definimos un margen de error para realizar las comparaciones entre parámetros (0.00001)
+    EPSILON = 1e-5
 
     def __init__ (self, x, y, z):
         self.x = x
         self.y = y
         self.z = z
-    
     def suma_vectores(self, vector2):
-        x1 = self.x
-        y1 = self.y
-        z1 = self.z
 
-        x2 = vector2.x
-        y2 = vector2.y
-        z2 = vector2.z
-
-        suma = vectores(x1 + x2, y1 + y2, z1 + z2)
-        return suma
+        return vectores(self.x+vector2.x, self.y+vector2.y, self.z+vector2.z)
 
     def resta_vectores(self, vector2):
-        x1 = self.x
-        y1 = self.y
-        z1 = self.z
-    
-        x2 = vector2.x
-        y2 = vector2.y
-        z2 = vector2.z
-    
-        resta = vectores(x1 - x2, y1 - y2, z1 - z2)
-        return resta
-    
-    def producto_escalar(self, escalar: int):
-        x = self.x
-        y = self.y
-        z = self.z
 
-        resultado = vectores(x * escalar, y * escalar, z * escalar)
-        return resultado
+        return vectores(self.x-vector2.x, self.y-vector2.y, self.z-vector2.z)
+
+    def producto_escalar(self, escalar: float):
+
+        return vectores(self.x*escalar, self.y*escalar, self.z*escalar)
 
     def producto_punto(self, vector2):
-        x1 = self.x
-        y1 = self.y
-        z1 = self.z
-            
-        x2 = vector2.x
-        y2 = vector2.y
-        z2 = vector2.z
 
-        resultado = (x1 * x2) + (y1 * y2) + (z1 * z2)
-        return resultado
+        return (self.x*vector2.x) + (self.y*vector2.y) + (self.z*vector2.z)
 
     def norma_vector(self):
-        x = self.x
-        y = self.y
-        z = self.z
-        
-        norma = math.sqrt(math.pow(x, 2) + math.pow(y, 2) + math.pow(z, 2))
-        return norma
-    
+
+        return math.sqrt(math.pow(self.x, 2) + math.pow(self.y, 2) + math.pow(self.z, 2))
+
     def normalizar_vector(self):
-        x = self.x
-        y = self.y
-        z = self.z
 
-        norma = math.sqrt(math.pow(x, 2) + math.pow(y, 2) + math.pow(z, 2))
-
-        resultado = vectores(x / norma, y / norma, z / norma)
-        return resultado
+        return vectores(self.x / self.norma_vector(), self.y / self.norma_vector(), self.z / self.norma_vector())
 
     #metodo para poder comprar objetos de tipo vector
     def __eq__(self, otro):
-        return self.x == otro.x and self.y == otro.y and self.z == otro.z    
-
-        
-        
+        if isinstance(otro, vectores):
+            return (
+                math.isclose(self.x, otro.x, abs_tol=self.EPSILON)
+                and math.isclose(self.y, otro.y, abs_tol=self.EPSILON)
+                and math.isclose(self.z, otro.z, abs_tol=self.EPSILON)
+            )
+        return False
