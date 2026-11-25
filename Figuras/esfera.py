@@ -30,7 +30,7 @@ class esfera:
                 return False
 
         hit_info.t = t
-        hit_info.p = rayo.parametrica(t)
+        hit_info.punto = rayo.parametrica(t)
 
         return True
 
