@@ -1,0 +1,15 @@
+# Byte-compiled / cache de Python
+__pycache__/
+*$py.class
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+ENV/
+
+# Caché y reportes de pytest
+.pytest_cache/
+
+# Imágenes generadas de prueba
+*.ppm
