@@ -2,6 +2,7 @@ import pytest
 from vectores import vectores
 from rayo import rayo
 from Figuras.esfera import esfera
+from hit import hit_info
 
 def test_apunta_al_centro():
         centro = vectores(0,0,0)
@@ -10,16 +11,20 @@ def test_apunta_al_centro():
         vector2 = vectores(-5,-2,-3)
         rayo1 = rayo(vector1, vector2)
 
-        assert esfera1.intersecciona(rayo1)
+        info = hit_info()
 
-def test_roza_orilla():
+        assert esfera1.intersecciona(rayo1,info)
+
+def test_t_es_cero():
         centro = vectores(0,0,0)
         esfera1 = esfera(centro,1)
         vector1 = vectores(1,0,0)
         vector2 = vectores(0,5,0)
         rayo1 = rayo(vector1, vector2)
 
-        assert esfera1.intersecciona(rayo1)
+        info = hit_info()
+
+        assert not esfera1.intersecciona(rayo1,info)
 
 
 def test_no_pasa():
@@ -29,4 +34,50 @@ def test_no_pasa():
         vector2 = vectores(0,5,0)
         rayo1 = rayo(vector1, vector2)
 
-        assert not esfera1.intersecciona(rayo1)
+        info = hit_info()
+
+        assert not esfera1.intersecciona(rayo1,info)
+
+def test_atravieza():
+        centro = vectores(0,0,0)
+        esfera1 = esfera(centro,1)
+        vector1 = vectores(-3,0,0)
+        vector2 = vectores(1,0,0)
+        rayo1 = rayo(vector1, vector2)
+
+        info = hit_info()
+
+        assert esfera1.intersecciona(rayo1,info)   
+
+def test_dentro():
+        centro = vectores(0,0,0)
+        esfera1 = esfera(centro,1)
+        vector1 = vectores(0,0,0)
+        vector2 = vectores(1,0,0)
+        rayo1 = rayo(vector1, vector2)
+
+        info = hit_info()
+
+        assert esfera1.intersecciona(rayo1,info) 
+
+def test_esta_atras():
+        centro = vectores(0,0,0)
+        esfera1 = esfera(centro,1)
+        vector1 = vectores(3,0,0)
+        vector2 = vectores(1,0,0)
+        rayo1 = rayo(vector1, vector2)
+
+        info = hit_info()
+
+        assert not esfera1.intersecciona(rayo1,info)
+
+def test_roza_orilla():
+        centro = vectores(0,0,0)
+        esfera1 = esfera(centro,1)
+        vector1 = vectores(3,1,0)
+        vector2 = vectores(-1,0,0)
+        rayo1 = rayo(vector1, vector2)
+
+        info = hit_info()
+
+        assert esfera1.intersecciona(rayo1,info)            
