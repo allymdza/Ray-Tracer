@@ -30,7 +30,7 @@ class hit_lista:
             if obj.intersecciona(rayo, info_temporal, tmin, mas_cercano):
                 toca_algo = True
                 mas_cercano = info_temporal.t
-                info_hit.p = info_temporal.p
+                info_hit.punto = info_temporal.punto
                 info_hit.t = info_temporal.t
 
         return toca_algo #si es falso el rayo va hasta el fondo
