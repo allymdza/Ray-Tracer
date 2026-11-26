@@ -54,3 +54,11 @@ def test_normaliza_vector():
 def test_compara_vector_con_no_vector():
     vector = vectores(1, 2, 3)
     assert False == vector.__eq__("hola")
+
+def test_producto_cruz():
+    vector = vectores(2,3,4)
+    vector2 = vectores(5,6,7)
+
+    producto_cruz = vector.producto_cruz(vector2)
+    resultado = vectores(-3,6,-3)
+    assert producto_cruz == resultado

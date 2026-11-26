@@ -33,6 +33,13 @@ class vectores:
 
         return vectores(self.x / self.norma_vector(), self.y / self.norma_vector(), self.z / self.norma_vector())
 
+    def producto_cruz(self, vector2):
+        nx = (self.y * vector2.z)- (self.z * vector2.y)
+        ny = (self.z * vector2.x) - (self.x * vector2.z)
+        nz = (self.x * vector2.y) - (self.y * vector2.x) 
+
+        return vectores(nx, ny, nz)
+
     #metodo para poder comprar objetos de tipo vector
     def __eq__(self, otro):
         if isinstance(otro, vectores):
